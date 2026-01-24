@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="view_crm_lead_ai_factory" model="ir.ui.view">
+        <field name="name">crm.lead.ai.factory</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            
+            <header position="inside">
+                <button name="action_ask_ai" string="🚀 Analyze with AI" type="object" class="oe_highlight" icon="fa-rocket"/>
+                <button name="action_print_gift_card" string="🖨️ Print Gift Card" type="object" class="btn-warning" icon="fa-print"/>
+            </header>
+
+            <xpath expr="//sheet" position="before">
+                <div style="background: #f8f9fa; padding: 15px; border-bottom: 3px solid #6c5ce7; margin-bottom: 20px;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3 style="color: #6c5ce7; font-weight: 900; margin: 0;">
+                            🤖 JARVIS CONTROL CENTER
+                        </h3>
+                    </div>
+                    
+                    <div class="row mt-3">
+                        <div class="col-3 text-center" style="border-right: 1px solid #ddd;">
+                            <div class="mb-2">
+                                <label for="ai_score" string="Potential"/>
+                                <field name="ai_score" widget="percentpie" nolabel="1"/>
+                            </div>
+                            <div style="background: #2d3436; color: #fff; padding: 8px; border-radius: 5px; font-size: 11px; text-align: left;">
+                                <strong>🧠 Strategy:</strong>
+                                <field name="ai_strategy" readonly="1" nolabel="1"/>
+                            </div>
+                        </div>
+
+                        <div class="col-4" style="padding: 0 15px;">
+                            <strong style="color: #0984e3;">💬 Suggested Replies:</strong>
+                            <div style="margin-top: 5px; display: flex; flex-direction: column; gap: 10px;">
+                                <div style="background: #e1ffc7; padding: 8px 12px; border-radius: 15px; font-size: 12px; border: 1px solid #dcf8c6;">
+                                    <strong style="color: #2ecc71;">😊 Friendly:</strong>
+                                    <field name="ai_reply_friendly" readonly="1" nolabel="1"/>
+                                </div>
+                                <div style="background: #fff3cd; padding: 8px 12px; border-radius: 15px; font-size: 12px; border: 1px solid #ffeeba;">
+                                    <strong style="color: #e67e22;">🔥 Professional:</strong>
+                                    <field name="ai_reply_professional" readonly="1" nolabel="1"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-5">
+                            <div style="background: #fff0f5; border: 4px double #e84393; border-radius: 10px; padding: 15px; height: 320px; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center;">
+                                
+                                <div style="color: #d63031; font-weight: bold; font-family: serif; font-size: 16px; margin-bottom: 5px;">
+                                    💌 GIFT CARD PREVIEW
+                                </div>
+                                
+                                <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center; width: 100%;">
+                                    <field name="ai_gift_message" readonly="1" nolabel="1" style="font-family: 'Georgia', serif; font-style: italic; font-size: 13px; color: #e84393; text-align: center; width: 90%;"/>
+                                </div>
+
+                                <div style="display: flex; align-items: center; gap: 10px; margin-top: 5px; background: rgba(255,255,255,0.8); padding: 5px; border-radius: 5px;">
+                                    <div style="transform: scale(0.8);">
+                                        <field name="qr_code_html" readonly="1" nolabel="1"/>
+                                    </div>
+                                    <div style="text-align: left; font-size: 10px; color: #636e72;">
+                                        <strong>Decharmix Store</strong><br/>
+                                        <em>Wrapping love ❤️</em>
+                                    </div>
+                                </div>
+                                
+                                <div style="position: absolute; top: -10px; right: -10px; font-size: 30px; opacity: 0.2;">🌸</div>
+                                <div style="position: absolute; bottom: -10px; left: -10px; font-size: 30px; opacity: 0.2;">🌿</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="action_report_gift_card" model="ir.actions.report">
+        <field name="name">Gift Card (AI Design)</field>
+        <field name="model">crm.lead</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">odoo_ai_copilot_automation.report_gift_card_template</field>
+        <field name="report_file">odoo_ai_copilot_automation.report_gift_card_template</field>
+        <field name="binding_model_id" ref="model_crm_lead"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="base.paperformat_euro"/> 
+    </record>
+
+    <template id="report_gift_card_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <div class="page" style="font-family: 'Arial', sans-serif; page-break-inside: avoid;">
+                    <meta charset="utf-8"/>
+                    
+                    <div style="border: 10px solid #fab1a0; padding: 40px; margin: 20px auto; border-radius: 20px; background-color: #fffafa; text-align: center; height: 900px; width: 90%; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 5px 5px 15px rgba(0,0,0,0.1);">
+                        
+                        <div>
+                            <h1 style="color: #e17055; font-size: 42px; margin-bottom: 10px; font-weight: bold; font-family: 'Times New Roman', serif;">💌 GIFT CARD</h1>
+                            <div style="width: 150px; height: 3px; background: #e17055; margin: 0 auto 30px auto;"></div>
+                            <h3 style="color: #636e72; font-size: 22px;">Dear: <span t-field="o.contact_name" style="color: #2d3436; font-weight: bold;"/></h3>
+                        </div>
+                        
+                        <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center;">
+                            <div style="font-size: 30px; font-style: italic; color: #d63031; line-height: 2.2; font-family: 'Times New Roman', serif;">
+                                <span t-field="o.ai_gift_message"/>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div style="font-size: 16px; color: #636e72; margin-bottom: 20px;">
+                                <p>Prepared with love ❤️</p>
+                                <p>From: <strong>Decharmix Store</strong></p>
+                            </div>
+                            
+                            <div style="background: white; padding: 10px; display: inline-block; border: 1px solid #eee; border-radius: 10px;">
+                                <span t-field="o.qr_code_html"/>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+</odoo>
