@@ -9,17 +9,17 @@
     
     KEY FEATURES:
     -------------
-    1. 🧠 AI Customer Insights:
+    1.  AI Customer Insights:
        - Instantly analyze customer psychology & budget from a simple description.
        - Generate tailored Sales Strategies & Scripts (Friendly/Professional).
     
-    2. 🚀 Auto-Pilot Mode (One-Click Automation):
+    2.  Auto-Pilot Mode (One-Click Automation):
        - Auto-select optimal Product Combos based on budget.
        - Auto-Create Quotations (Sale Orders).
        - Auto-Check Stock & Create Purchase Orders for missing items.
        - Auto-Assign "Packaging" Tasks to the Warehouse team.
        
-    3. 💌 Smart Content Generation:
+    3.  Smart Content Generation:
        - Generate personalized Gift Card messages.
        - Create QR Codes for order tracking.
        
