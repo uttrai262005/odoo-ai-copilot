@@ -32,7 +32,7 @@
     'version': '19.0.1.0.0',    
     # LICENSE 
     'license': 'OPL-1', 
-    'price': 19.00,
+    'price': 2,
     'currency': 'USD',
     
     'depends': ['base', 'crm', 'sale_management', 'purchase', 'project', 'stock'], 
